@@ -6,7 +6,7 @@ window.addEventListener("load", function() {
     setTimeout(() => {
         window.scrollTo(0,0);
     },0)
-    window.location.href= "http://127.0.0.1:5500/global.html#loader";
+    window.location.href= "https://rajesh-nyk.github.io/my-website/#loader";
     const loadTime = new Date().getTime() - startTime;
     const remainingTime = minLoadTime - startTime;
     console.log(remainingTime)
