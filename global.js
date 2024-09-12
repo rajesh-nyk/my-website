@@ -13,7 +13,7 @@ window.addEventListener("load", function() {
     setTimeout(function() {
         window.scrollTo(0,0);
         loader.style.display = "none";
-        outlineRajesh()
+        outlineRajesh();
     }, remainingTime > minLoadTime ? 0 : minLoadTime)
 });
 
