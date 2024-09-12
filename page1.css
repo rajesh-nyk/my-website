@@ -1,6 +1,6 @@
 .page1 {
     max-height: 100dvh;
-    cursor:grabbing;
+    cursor:none;
 }
 .cursor {
     position: absolute;
