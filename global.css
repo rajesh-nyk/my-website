@@ -1,0 +1,38 @@
+body {
+    height: 100dvh;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+#loader {
+    background-color: rgb(1, 10, 20);
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#welcome path:nth-child(1n) {
+    stroke-dasharray: 50;
+    stroke-dasharray: 50;
+   animation: text-anim 3s ease alternate infinite;
+}
+
+@keyframes text-anim {
+    to {
+        stroke-dasharray: 400;
+        stroke-dasharray: 400;
+
+    }
+}
+.page1 {
+    height: 100dvh;
+    background-color: rgb(1, 10, 20);
+}
+#page2 {
+    height: 100dvh;
+    background-color: brown;
+    scroll-snap-type: y mandatory;
+}
