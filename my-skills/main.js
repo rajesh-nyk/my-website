@@ -108,14 +108,11 @@
             });
         }
 
-        /* ---- The animated "a": continuous iridescent shimmer ---- */
-        gsap.to('.lg-a', {
-            backgroundPositionX: '200%',
-            duration: 6, ease: 'none', repeat: -1,
-        });
-
-        /* ---- Hero load sequence ---- */
+        /* ---- Hero load sequence ----
+           The iridescent color-sweep on every "a" runs in CSS (so it shows even
+           if GSAP is slow or blocked); GSAP layers transform + glow on top. */
         const nameChars = splitChars(document.querySelector('.hero__name'));
+        const aGlyphs = nameChars.filter((c) => c.classList.contains('lg-a'));
         const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
         /* hero items are pre-hidden by CSS, so animate TO the visible state */
@@ -131,12 +128,22 @@
           .fromTo('.hero__card', { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5')
           .fromTo('.hero__scroll', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.3');
 
-        /* Give the name's "a" glyphs a gentle, living float */
-        nameChars.filter((c) => c.classList.contains('lg-a')).forEach((a, i) => {
+        /* Once the name lands, its "a" glyphs come alive: bob up, grow, and
+           pulse an iridescent glow. Uses y (px) + scale so it never fights the
+           entrance tween (which animates yPercent). */
+        aGlyphs.forEach((a, i) => {
+            const start = 2.1 + i * 0.18;
             gsap.to(a, {
-                yPercent: -14, duration: 2 + i * 0.25, delay: 1.4 + i * 0.1,
+                y: -16, scale: 1.18, duration: 1.5, delay: start,
                 ease: 'sine.inOut', repeat: -1, yoyo: true,
             });
+            gsap.fromTo(a,
+                { filter: 'drop-shadow(0 0 2px rgba(149, 176, 255, 0))' },
+                {
+                    filter: 'drop-shadow(0 0 18px rgba(149, 176, 255, 0.9))',
+                    duration: 1.5, delay: start, ease: 'sine.inOut',
+                    repeat: -1, yoyo: true,
+                });
         });
 
         /* ---- Ambient blob drift ---- */
@@ -174,9 +181,6 @@
             gsap.from(cChars, {
                 yPercent: 110, opacity: 0, duration: 0.8, ease: 'power4.out', stagger: 0.02,
                 scrollTrigger: { trigger: connectTitle, start: 'top 82%' },
-            });
-            gsap.to(cChars.filter((c) => c.classList.contains('lg-a')), {
-                backgroundPositionX: '200%', duration: 6, ease: 'none', repeat: -1,
             });
         }
 
