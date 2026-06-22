@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rajesh Nayak — Reliability & Data Engineering</title>
+    <meta name="description" content="Rajesh Nayak — Data Engineering & Site Reliability Senior Analyst. Five years turning noisy signals into calm, automated, observable systems." />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script>document.documentElement.classList.add('js');</script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Ambient liquid-glass atmosphere -->
+    <div class="atmosphere" aria-hidden="true">
+        <span class="blob blob--1"></span>
+        <span class="blob blob--2"></span>
+        <span class="blob blob--3"></span>
+        <span class="grain"></span>
+    </div>
+
+    <!-- ============ NAV ============ -->
+    <header class="topbar">
+        <nav class="glass nav" aria-label="Primary">
+            <a class="nav__brand" href="#top" aria-label="Rajesh Nayak — top">
+                <span class="nav__dot" aria-hidden="true"></span>
+                <span data-a>Rajesh Nayak</span>
+            </a>
+            <ul class="nav__links">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#stack">Stack</a></li>
+                <li><a href="#background">Background</a></li>
+            </ul>
+            <a class="nav__cta" href="#connect">Connect</a>
+            <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+                <span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main">
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="top" aria-labelledby="hero-name">
+            <p class="hero__eyebrow" data-fade>
+                <span class="live" aria-hidden="true"></span>
+                Site Reliability · Data Engineering
+            </p>
+
+            <h1 class="hero__name" id="hero-name" data-split>Rajesh Nayak</h1>
+
+            <p class="hero__role" data-fade>
+                I keep critical systems <em>calm</em>, observable, and automated.
+            </p>
+
+            <p class="hero__lede" data-fade>
+                Data Engineering &amp; Site Reliability Senior Analyst with five years turning
+                noisy production signals into proactive, self-healing operations — built on
+                <b>Splunk</b>, <b>Python</b>, and <b>Power&nbsp;Automate</b>.
+            </p>
+
+            <div class="hero__actions" data-fade>
+                <a class="btn btn--solid" href="#work">
+                    See the work
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a class="btn btn--glass" href="#connect">Get in touch</a>
+            </div>
+
+            <!-- Signature: pointer-lit liquid glass card -->
+            <div class="hero__card glass glass--lit" id="heroCard" data-fade>
+                <div class="hero__card-row">
+                    <span class="hero__card-label">Now</span>
+                    <span class="hero__card-value" data-a>Site Reliability Engineer</span>
+                </div>
+                <div class="hero__card-row">
+                    <span class="hero__card-label">For</span>
+                    <span class="hero__card-value" data-a>MolsonCoors · via Accenture</span>
+                </div>
+                <div class="hero__card-row">
+                    <span class="hero__card-label">From</span>
+                    <span class="hero__card-value" data-a>Bhubaneswar, India</span>
+                </div>
+            </div>
+
+            <a class="hero__scroll" href="#profile" aria-label="Scroll to profile">
+                <span></span>
+            </a>
+        </section>
+
+        <!-- ============ PROFILE ============ -->
+        <section class="section" id="profile" aria-labelledby="profile-title">
+            <p class="eyebrow" data-reveal>What I do</p>
+            <h2 class="section__title" id="profile-title" data-a data-reveal>
+                Reliability is a design problem, not a fire drill.
+            </h2>
+            <div class="profile">
+                <p class="profile__lead" data-reveal>
+                    I build the monitoring, automation, and governance that let teams sleep —
+                    surfacing problems before customers feel them, and resolving the routine ones
+                    without a human in the loop.
+                </p>
+                <p class="profile__body" data-reveal>
+                    Five years across enterprise platforms taught me that the best alert is the one
+                    that fixes itself. I design Splunk observability end to end, wire it into Power
+                    Automate and RPA for closed-loop remediation, and script the rest in Python so
+                    the on-call queue stays quiet and the data stays trustworthy.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ METRICS ============ -->
+        <section class="section section--tight" aria-label="Impact in numbers">
+            <ul class="metrics">
+                <li class="metric glass" data-reveal>
+                    <span class="metric__num" data-count="5" data-suffix="+">0</span>
+                    <span class="metric__label">Years building reliable systems</span>
+                </li>
+                <li class="metric glass" data-reveal>
+                    <span class="metric__num" data-count="50" data-suffix="+">0</span>
+                    <span class="metric__label">Real-time dashboards shipped</span>
+                </li>
+                <li class="metric glass" data-reveal>
+                    <span class="metric__num" data-count="50" data-suffix="%">0</span>
+                    <span class="metric__label">Manual effort automated away</span>
+                </li>
+                <li class="metric glass" data-reveal>
+                    <span class="metric__num" data-count="900" data-suffix="">0</span>
+                    <span class="metric__label">Servers patched each cycle</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ============ WORK ============ -->
+        <section class="section" id="work" aria-labelledby="work-title">
+            <p class="eyebrow" data-reveal>Where I've worked</p>
+            <h2 class="section__title" id="work-title" data-a data-reveal>Selected experience</h2>
+
+            <div class="work">
+                <article class="job glass" data-reveal>
+                    <header class="job__top">
+                        <div>
+                            <h3 class="job__role" data-a>Site Reliability Engineer</h3>
+                            <p class="job__org">MolsonCoors Brewery · via Accenture</p>
+                        </div>
+                        <span class="job__when"><span class="live live--sm"></span>2023 — Now</span>
+                    </header>
+                    <ul class="job__list">
+                        <li>Onboarded <b>10+</b> Splunk-based applications into one centralized monitoring fabric.</li>
+                        <li>Built custom Splunk apps for IBM batch-job monitoring, <b>cutting manual effort 50%</b>.</li>
+                        <li>Automated incident workflows in Power Automate, <b>trimming response time 40%</b>.</li>
+                        <li>Wired Splunk + Power Automate + RPA for closed-loop host restarts and SAP&nbsp;HANA auto-remediation.</li>
+                        <li>Designed <b>100+</b> saved searches, macros, and data models behind <b>50+</b> live dashboards.</li>
+                    </ul>
+                    <ul class="chips">
+                        <li>Splunk</li><li>Python</li><li>Power Automate</li><li>RPA</li><li>SAP HANA</li><li>ServiceNow</li>
+                    </ul>
+                </article>
+
+                <article class="job glass" data-reveal>
+                    <header class="job__top">
+                        <div>
+                            <h3 class="job__role" data-a>Application Developer</h3>
+                            <p class="job__org">AT&amp;T · Online Services · via Accenture</p>
+                        </div>
+                        <span class="job__when">2020 — 2023</span>
+                    </header>
+                    <ul class="job__list">
+                        <li>Caught production issues ahead of customer impact, opening outages early to protect SLAs.</li>
+                        <li>Built a chatbot surfacing business impact, change details, and POCs — extended into Teams.</li>
+                        <li>Ran observability across Splunk, ELK, Quantum Metrics, and Dynatrace.</li>
+                        <li>Patched nearly <b>900 servers</b> twice yearly to keep infrastructure SLA-compliant.</li>
+                    </ul>
+                    <ul class="chips">
+                        <li>Splunk</li><li>Elastic Stack</li><li>Dynatrace</li><li>Quantum Metrics</li><li>Unix</li>
+                    </ul>
+                </article>
+
+                <article class="job glass" data-reveal>
+                    <header class="job__top">
+                        <div>
+                            <h3 class="job__role" data-a>Data Engineering Senior Analyst</h3>
+                            <p class="job__org">Accenture</p>
+                        </div>
+                        <span class="job__when">2019 — Now</span>
+                    </header>
+                    <ul class="job__list">
+                        <li>Grew from Application Developer to Senior Analyst across enterprise reliability engagements.</li>
+                        <li>Championed knowledge-sharing to keep delivery aligned and lag-free.</li>
+                    </ul>
+                    <ul class="chips">
+                        <li>Monitoring</li><li>Automation</li><li>Data Governance</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ STACK ============ -->
+        <section class="section" id="stack" aria-labelledby="stack-title">
+            <p class="eyebrow" data-reveal>What I build with</p>
+            <h2 class="section__title" id="stack-title" data-a data-reveal>The stack</h2>
+
+            <div class="stack">
+                <article class="stack__group glass" data-reveal>
+                    <h3 class="stack__head">Observability</h3>
+                    <ul class="chips chips--lg">
+                        <li>Splunk</li><li>Elastic Stack</li><li>Grafana</li><li>Dynatrace</li><li>Quantum Metrics</li>
+                    </ul>
+                </article>
+                <article class="stack__group glass" data-reveal>
+                    <h3 class="stack__head">Languages</h3>
+                    <ul class="chips chips--lg">
+                        <li>Python</li><li>Unix Shell</li><li>JavaScript</li><li>HTML / CSS</li><li>C++</li>
+                    </ul>
+                </article>
+                <article class="stack__group glass" data-reveal>
+                    <h3 class="stack__head">Cloud &amp; DevOps</h3>
+                    <ul class="chips chips--lg">
+                        <li>Azure</li><li>Docker</li><li>Git</li><li>Linux</li><li>DevOps</li>
+                    </ul>
+                </article>
+                <article class="stack__group glass" data-reveal>
+                    <h3 class="stack__head">Automation &amp; Data</h3>
+                    <ul class="chips chips--lg">
+                        <li>Power Automate</li><li>RPA</li><li>ServiceNow</li><li>Data Governance</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ BACKGROUND ============ -->
+        <section class="section" id="background" aria-labelledby="bg-title">
+            <p class="eyebrow" data-reveal>The foundation</p>
+            <h2 class="section__title" id="bg-title" data-a data-reveal>Background</h2>
+
+            <div class="bg-grid">
+                <article class="bg-card glass" data-reveal>
+                    <span class="bg-card__time">2015 — 2019</span>
+                    <h3 class="bg-card__title" data-a>B.Tech</h3>
+                    <p class="bg-card__sub">Silicon Institute of Technology, Bhubaneswar</p>
+                    <p class="bg-card__note">CGPA 7.35</p>
+                </article>
+                <article class="bg-card glass" data-reveal>
+                    <span class="bg-card__time">2020</span>
+                    <h3 class="bg-card__title" data-a>AZ-900</h3>
+                    <p class="bg-card__sub">Microsoft Azure Fundamentals</p>
+                    <p class="bg-card__note">Certified</p>
+                </article>
+                <article class="bg-card glass" data-reveal>
+                    <span class="bg-card__time">Languages</span>
+                    <h3 class="bg-card__title" data-a>Three</h3>
+                    <p class="bg-card__sub">English · Hindi · Odia</p>
+                    <p class="bg-card__note">Fluent</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ CONNECT ============ -->
+        <section class="section connect" id="connect" aria-labelledby="connect-title">
+            <div class="connect__panel glass glass--lit" id="connectCard">
+                <p class="eyebrow" data-reveal>Let's talk</p>
+                <h2 class="connect__title" id="connect-title" data-split-sm>Building something that has to stay up?</h2>
+                <p class="connect__lede" data-reveal>
+                    I'm open to conversations about reliability engineering, observability, and
+                    automation. The fastest way to reach me is LinkedIn.
+                </p>
+                <div class="connect__actions" data-reveal>
+                    <a class="btn btn--solid" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.5 8h4V24h-4V8Zm7 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.86-2.75 3.78V24h-4V8Z" fill="currentColor" stroke="none"/></svg>
+                        Connect on LinkedIn
+                    </a>
+                    <a class="btn btn--glass" href="#top">Back to top</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p data-a>Rajesh Nayak</p>
+        <p class="footer__mono">© <span id="year">2026</span> · Designed &amp; built for the web</p>
+    </footer>
+</body>
+</html>
