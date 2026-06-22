@@ -25,11 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
     }
 
-    /* ---- Scroll reveal ---- */
-    const reveals = document.querySelectorAll('.reveal');
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-        reveals.forEach((el) => el.classList.add('is-visible'));
-    } else {
+    /* ---- Reduced motion: show everything immediately ---- */
+    if (reduceMotion) {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+        document.querySelectorAll('.stat__num').forEach((el) => {
+            el.textContent = parseInt(el.dataset.count, 10) || 0;
+        });
+        return;
+    }
+
+    /* ---- GSAP unavailable: fall back to CSS transitions ---- */
+    if (typeof gsap === 'undefined') {
         const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -38,50 +44,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-        reveals.forEach((el) => io.observe(el));
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+        return;
     }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ---- Hero entrance ---- */
+    gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .fromTo('.hero .eyebrow',  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 })
+        .fromTo('#hero-title',     { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 1.0 }, '-=0.45')
+        .fromTo('.hero__role',     { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.55')
+        .fromTo('.hero__lede',     { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
+        .fromTo('.hero__meta',     { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.45')
+        .fromTo('.hero__actions',  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+        .fromTo('.stats',          { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.35');
+
+    /* ---- Scroll reveal (non-hero sections) ---- */
+    document.querySelectorAll('.reveal').forEach((el) => {
+        if (el.closest('.hero')) return;
+        gsap.fromTo(el,
+            { opacity: 0, y: 40 },
+            {
+                opacity: 1, y: 0,
+                duration: 0.85,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: el, start: 'top 88%' },
+            }
+        );
+    });
 
     /* ---- Count-up stats ---- */
-    const nums = document.querySelectorAll('.stat__num');
-    const runCount = (el) => {
+    document.querySelectorAll('.stat__num').forEach((el) => {
         const target = parseInt(el.dataset.count, 10) || 0;
-        if (reduceMotion) { el.textContent = target; return; }
-        const duration = 1200;
-        const start = performance.now();
-        const step = (now) => {
-            const p = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = Math.round(target * eased);
-            if (p < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-    };
-    if ('IntersectionObserver' in window) {
-        const statIO = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) { runCount(entry.target); statIO.unobserve(entry.target); }
-            });
-        }, { threshold: 0.6 });
-        nums.forEach((el) => statIO.observe(el));
-    }
+        const proxy = { val: 0 };
+        gsap.to(proxy, {
+            val: target,
+            duration: 1.6,
+            ease: 'power2.out',
+            onUpdate() { el.textContent = Math.round(proxy.val); },
+            scrollTrigger: { trigger: el, start: 'top 85%' },
+        });
+    });
 
     /* ---- Active nav link on scroll ---- */
-    const sections = document.querySelectorAll('main section[id]');
-    const links = new Map();
+    const navLinks = new Map();
     document.querySelectorAll('.nav__menu a[href^="#"]').forEach((a) => {
-        links.set(a.getAttribute('href').slice(1), a);
+        navLinks.set(a.getAttribute('href').slice(1), a);
     });
-    if ('IntersectionObserver' in window && sections.length) {
-        const navIO = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                const link = links.get(entry.target.id);
-                if (!link) return;
-                if (entry.isIntersecting) {
-                    links.forEach((l) => l.classList.remove('is-active'));
-                    link.classList.add('is-active');
-                }
-            });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        sections.forEach((s) => navIO.observe(s));
-    }
+    document.querySelectorAll('main section[id]').forEach((section) => {
+        ScrollTrigger.create({
+            trigger: section,
+            start: 'top 55%',
+            end: 'bottom 45%',
+            onEnter: () => {
+                navLinks.forEach((l) => l.classList.remove('is-active'));
+                navLinks.get(section.id)?.classList.add('is-active');
+            },
+            onEnterBack: () => {
+                navLinks.forEach((l) => l.classList.remove('is-active'));
+                navLinks.get(section.id)?.classList.add('is-active');
+            },
+        });
+    });
 });
